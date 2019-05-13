@@ -6,10 +6,16 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <form method="post">
-    <input type="text" name="cheeseName" />
-    <input type="text" name="cheeseDesc" />
+    <input type="text" name="cheeseName" placeholder="cheese name" />
+    <input type="text" name="cheeseDesc" placeholder="cheese desc" th:value="${cheeseDesc}" />
     <input type="submit" value="Add Cheese" />
 </form>
+
+<p th:text="${nameError}"></p>
+
+<div th:each="mapItem : ${cheeses}">
+    <p th:text="${mapItem.key + ' : ' + mapItem.value}"></p>
+</div>
 
 </body>
 </html>
