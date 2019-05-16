@@ -5,18 +5,14 @@
 <h1 th:text="${title}">Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
-<p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>
+<p th:unless="${myCheeses} and ${myCheeses.size()}">no cheese :(</p>
 
-<tr th:each="mapItem : ${cheeses}">
-    <td th:text="${mapItem.key}">Key</td>
-    <td th:text="${mapItem.value}">Value</td>
-</tr>
-
-<!--
-<div th:each="mapItem : ${cheeses}">
-    <p th:text="${mapItem.key + ' : ' + mapItem.value}"></p>
-</div>
--->
+<table>
+    <tr th:each="cheese : ${myCheeses}">
+        <td th:text="${cheese.getName()}">Key</td>
+        <td th:text="${cheese.getDescription()}">Value</td>
+    </tr>
+</table>
 
 </body>
 </html>

@@ -5,14 +5,15 @@
 <h1 th:text="${title}">Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
-<p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>
+<p th:unless="${myCheeses} and ${myCheeses.size()}">no cheese :(</p>
 
 <form method="post">
-    <ul th:each="mapItem : ${cheeses}">
-        <li><input type="checkbox" th:text="${mapItem.key}" name="cheeseList" th:value="${mapItem.key}" /></li>
+    <ul th:each="cheese : ${myCheeses}">
+        <li><input type="checkbox" th:text="${cheese.getName()}" name="cheeseList" th:value="${cheese.getName()}" /></li>
     </ul>
-    <input th:if="${cheeses} and ${cheeses.size()}" type="submit" value="Remove"/>
+    <input th:if="${myCheeses} and ${myCheeses.size()}" type="submit" value="Remove"/>
 </form>
+
 
 </body>
 </html>
