@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
+
 <body>
-<h1 th:text="${title}">Default Title</h1>
-<nav th:replace="fragments :: navigation"></nav>
 
-<p th:unless="${myCheeses} and ${myCheeses.size()}">no cheese :(</p>
+    <div th:replace="fragments :: navigation"></div>
 
-<form method="post">
-    <ul th:each="cheese : ${myCheeses}">
-        <li><input type="checkbox" th:text="${cheese.getName()}" name="cheeseList" th:value="${cheese.getName()}" /></li>
-    </ul>
-    <input th:if="${myCheeses} and ${myCheeses.size()}" type="submit" value="Remove"/>
-</form>
+    <div class="container body-content">
 
+        <h1 th:text="${title}">Default Title</h1>
+
+        <p th:unless="${myCheeses} and ${myCheeses.size()}">no cheese :(</p>
+
+        <form method="post">
+            <div th:each="cheese : ${myCheeses}" class="checkbox">
+                <label><input type="checkbox" th:text="${cheese.getName()}" name="cheeseList" th:value="${cheese.getName()}" /></label>
+            </div>
+            <input th:if="${myCheeses} and ${myCheeses.size()}" type="submit" value="Remove" class="btn btn-warning"/>
+        </form>
+    </div>
 
 </body>
 </html>

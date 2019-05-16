@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
+
 <body>
-<h1 th:text="${title}">Default Title</h1>
-<nav th:replace="fragments :: navigation"></nav>
 
-<form method="post">
-    <input type="text" name="cheeseName" placeholder="cheese name" />
-    <input type="text" name="cheeseDesc" placeholder="cheese desc" th:value="${cheeseDesc}" />
-    <input type="submit" value="Add Cheese" />
-</form>
+    <div th:replace="fragments :: navigation"></div>
 
-<p th:text="${nameError}"></p>
+    <div class="container body-content">
+
+        <h1 th:text="${title}">Default Title</h1>
+
+        <form method="post" class="form-inline">
+            <input type="text" name="cheeseName" placeholder="cheese name" />
+            <input type="text" name="cheeseDesc" placeholder="cheese desc" th:value="${cheeseDesc}" />
+            <input type="submit" value="Add Cheese" class="btn btn-warning" />
+        </form>
+
+        <p th:text="${nameError}"></p>
+
+    </div>
 
 </body>
 </html>
