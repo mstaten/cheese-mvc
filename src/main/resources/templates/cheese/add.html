@@ -4,17 +4,29 @@
 
 <body>
 
-    <div th:replace="fragments :: navigation"></div>
+<div th:replace="fragments :: navigation"></div>
 
-    <div class="container body-content">
+<div class="container body-content">
 
-        <h1 th:text="${title}">Default Title</h1>
+    <h1 th:text="${title}">Default Title</h1>
 
-        <form method="post" class="form-inline">
-            <input type="text" name="name" placeholder="cheese name" />
-            <input type="text" name="description" placeholder="cheese desc" />
+    <form method="post" class="form-inline" style="..." th:object="${cheese}">
+        <div>
+            <input th:field="*{name}" placeholder="cheese name" />
+            <input th:field="*{description}" placeholder="cheese desc" />
+            <select th:field="*{type}" >
+                <option th:each="cheeseType : ${cheeseTypes}"
+                        th:text="${cheeseType.name}"
+                        th:value="${cheeseType}">
+                </option>
+            </select>
             <input type="submit" value="Add Cheese" class="btn btn-warning" />
-        </form>
+        </div>
+
+        <p th:errors="*{name}" class="error"></p>
+        <p th:errors="*{description}" class="error"></p>
+    </form>
+
 
     </div>
 
