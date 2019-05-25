@@ -11,12 +11,10 @@
         <h1 th:text="${title}">Default Title</h1>
 
         <form method="post" class="form-inline">
-            <input type="text" name="cheeseName" placeholder="cheese name" />
-            <input type="text" name="cheeseDesc" placeholder="cheese desc" th:value="${cheeseDesc}" />
+            <input type="text" name="name" placeholder="cheese name" />
+            <input type="text" name="description" placeholder="cheese desc" />
             <input type="submit" value="Add Cheese" class="btn btn-warning" />
         </form>
-
-        <p th:text="${nameError}"></p>
 
     </div>
 

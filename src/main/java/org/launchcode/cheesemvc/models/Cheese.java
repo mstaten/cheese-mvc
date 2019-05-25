@@ -8,14 +8,18 @@ public class Cheese {
 
     private String name;
     private String description;
+    private int cheeseId;
+    private static int nextId = 1;
 
     public Cheese(String name, String description) {
+        this();
         this.name = name;
         this.description = description;
     }
 
-    public Cheese(String name) {
-        this(name, "");
+    public Cheese() {
+        cheeseId = nextId;
+        nextId++;
     }
 
     public String getName() {
@@ -32,5 +36,18 @@ public class Cheese {
 
     public void setDescription(String aDescription) {
         this.description = aDescription;
+    }
+
+    public int getCheeseId() {
+        return cheeseId;
+    }
+
+    public void setCheeseId(int cheeseId) {
+        this.cheeseId = cheeseId;
+    }
+
+    @Override
+    public String toString() {
+        return "Cheese{" + name + " : " + description + "}";
     }
 }

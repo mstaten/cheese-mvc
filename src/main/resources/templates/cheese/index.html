@@ -12,10 +12,15 @@
 
         <p th:unless="${myCheeses} and ${myCheeses.size()}">no cheese :(</p>
 
-        <table>
+        <table class="table" th:if="${myCheeses} and ${myCheeses.size()}">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+
             <tr th:each="cheese : ${myCheeses}">
-                <td th:text="${cheese.getName()}">Key</td>
-                <td th:text="${cheese.getDescription()}">Value</td>
+                <td th:text="${cheese.name}"></td>
+                <td th:text="${cheese.description}"></td>
             </tr>
         </table>
     </div>

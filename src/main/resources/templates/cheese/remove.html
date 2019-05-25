@@ -14,7 +14,7 @@
 
         <form method="post">
             <div th:each="cheese : ${myCheeses}" class="checkbox">
-                <label><input type="checkbox" th:text="${cheese.getName()}" name="cheeseList" th:value="${cheese.getName()}" /></label>
+                <label><input type="checkbox" th:text="${cheese.name}" name="cheeseIds" th:value="${cheese.cheeseId}" th:id="${cheese.cheeseId}" /></label>
             </div>
             <input th:if="${myCheeses} and ${myCheeses.size()}" type="submit" value="Remove" class="btn btn-warning"/>
         </form>
