@@ -10,7 +10,6 @@
 
     <h1 th:text="@{'Edit Cheese ' + ${cheese.name} + '(id=' + ${cheese.cheeseId} + ')'}">Default Title</h1>
 
-
     <form method="post" class="form-inline" style="..." th:object="${cheese}">
         <div>
             <input th:field="*{name}" th:value="*{name}" placeholder="cheese name" />
@@ -22,6 +21,7 @@
                         th:selected="${cheeseType.ordinal()}==${cheese.type.ordinal()}">
                 </option>
             </select>
+            <input th:field="*{rating}" th:value="*{rating}" placeholder="rating" />
             <input type="submit" value="Edit Cheese" class="btn btn-warning" />
             <input type="hidden" th:value="*{cheeseId}" name="cheeseId" />
         </div>
@@ -29,6 +29,7 @@
         <p th:errors="*{name}" class="error"></p>
         <p th:errors="*{description}" class="error"></p>
         <p th:errors="*{type}" class="error"></p>
+        <p th:errors="*{rating}" class="error"></p>
     </form>
 
 

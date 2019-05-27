@@ -1,11 +1,9 @@
 package org.launchcode.cheesemvc.models;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 /*
 ** Models class
-**
 **/
 public class Cheese {
 
@@ -16,6 +14,12 @@ public class Cheese {
     @NotNull
     @Size(min=1, message = "Description must not be empty")
     private String description;
+
+    @NotNull
+    @Digits(integer = 1, fraction = 0, message = "Must be integer between 1 and 5")
+    @Min(value = 1, message = "Must be integer between 1 and 5")
+    @Max(value = 5,message = "Must be integer between 1 and 5")
+    private int rating;
 
     private CheeseType type;
     private int cheeseId;
@@ -65,12 +69,12 @@ public class Cheese {
         this.type = type;
     }
 
-    public Boolean isSelected(CheeseType aType) {
-        if (type.ordinal()== aType.ordinal()) {
-            return true;
-        } else {
-            return false;
-        }
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     @Override

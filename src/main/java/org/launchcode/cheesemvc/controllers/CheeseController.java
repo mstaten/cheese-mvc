@@ -42,6 +42,7 @@ public class CheeseController {
         editCheese2.setName(cheeseToEdit.getName());
         editCheese2.setDescription(cheeseToEdit.getDescription());
         editCheese2.setType(cheeseToEdit.getType());
+        editCheese2.setRating(cheeseToEdit.getRating());
         // works BUT not catching errors
 
         return "redirect:/cheese";

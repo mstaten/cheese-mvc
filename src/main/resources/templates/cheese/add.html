@@ -20,11 +20,14 @@
                         th:value="${cheeseType}">
                 </option>
             </select>
+            <input th:field="*{rating}" placeholder="rating"/>
             <input type="submit" value="Add Cheese" class="btn btn-warning" />
         </div>
 
         <p th:errors="*{name}" class="error"></p>
         <p th:errors="*{description}" class="error"></p>
+        <p th:errors="*{type}" class="error"></p>
+        <p th:errors="*{rating}" class="error"></p>
     </form>
 
 
