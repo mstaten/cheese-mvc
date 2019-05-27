@@ -6,10 +6,7 @@ import org.launchcode.cheesemvc.models.CheeseType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -26,6 +23,30 @@ public class CheeseController {
         return "cheese/index";
     }
 
+    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.GET)
+    public String displayEditForm(Model model, @PathVariable int cheeseId) {
+        Cheese editCheese = CheeseData.getById(cheeseId);
+        model.addAttribute(editCheese);
+        model.addAttribute("cheeseTypes", CheeseType.values());
+        return "cheese/edit";
+    }
+
+    @RequestMapping(value = {"edit/{cheeseId}"}, method = RequestMethod.POST)
+    public String processEditForm(@ModelAttribute @Valid Cheese cheeseToEdit, Errors errors) {
+
+        if (errors.hasErrors()) {
+            return "redirect:/cheese";
+        }
+
+        Cheese editCheese2 = CheeseData.getById(cheeseToEdit.getCheeseId());
+        editCheese2.setName(cheeseToEdit.getName());
+        editCheese2.setDescription(cheeseToEdit.getDescription());
+        editCheese2.setType(cheeseToEdit.getType());
+        // works BUT not catching errors
+
+        return "redirect:/cheese";
+    }
+
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddCheeseForm(Model model) {
         model.addAttribute("title", "Add Cheese");
@@ -40,6 +61,7 @@ public class CheeseController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
+            model.addAttribute("cheeseTypes", CheeseType.values());
             return "cheese/add";
         }
 

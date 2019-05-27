@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<div th:replace="fragments :: navigation"></div>
+
+<div class="container body-content">
+
+    <h1 th:text="@{'Edit Cheese ' + ${cheese.name} + '(id=' + ${cheese.cheeseId} + ')'}">Default Title</h1>
+
+
+    <form method="post" class="form-inline" style="..." th:object="${cheese}">
+        <div>
+            <input th:field="*{name}" th:value="*{name}" placeholder="cheese name" />
+            <input th:field="*{description}" th:value="*{description}" placeholder="cheese desc" />
+            <select th:field="*{type}" >
+                <option th:each="cheeseType : ${cheeseTypes}"
+                        th:text="${cheeseType.name}"
+                        th:value="${cheeseType}"
+                        th:selected="${cheeseType.ordinal()}==${cheese.type.ordinal()}">
+                </option>
+            </select>
+            <input type="submit" value="Edit Cheese" class="btn btn-warning" />
+            <input type="hidden" th:value="*{cheeseId}" name="cheeseId" />
+        </div>
+
+        <p th:errors="*{name}" class="error"></p>
+        <p th:errors="*{description}" class="error"></p>
+        <p th:errors="*{type}" class="error"></p>
+    </form>
+
+
+</div>
+
+</body>
+</html>

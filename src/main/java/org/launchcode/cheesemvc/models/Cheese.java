@@ -18,14 +18,14 @@ public class Cheese {
     private String description;
 
     private CheeseType type;
-
     private int cheeseId;
-    private static int nextId = 1;
+    private static int nextId;
 
-    public Cheese(String name, String description) {
+    public Cheese(String name, String description, CheeseType type) {
         this();
         this.name = name;
         this.description = description;
+        this.type = type;
     }
 
     public Cheese() {
@@ -63,6 +63,14 @@ public class Cheese {
 
     public void setType(CheeseType type) {
         this.type = type;
+    }
+
+    public Boolean isSelected(CheeseType aType) {
+        if (type.ordinal()== aType.ordinal()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
