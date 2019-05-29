@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
 public class Cheese {
 
     @NotNull
-    @Size(min=3, max=15)
+    @Size(min=3, max=15, message = "Name must be between 3 and 15 characters")
     private String name;
 
     @NotNull
@@ -16,15 +16,15 @@ public class Cheese {
     private String description;
 
     @NotNull
-    @Digits(integer = 1, fraction = 0, message = "Must be integer between 1 and 5")
-    @Min(value = 1, message = "Must be integer between 1 and 5")
-    @Max(value = 5,message = "Must be integer between 1 and 5")
+    @Min(value = 1, message = "Rating must be integer between 1 and 5")
+    @Max(value = 5,message = "Rating must be integer between 1 and 5")
     private int rating;
 
     private CheeseType type;
     private int cheeseId;
     private static int nextId;
 
+    /** Constructors **/
     public Cheese(String name, String description, CheeseType type) {
         this();
         this.name = name;
@@ -37,6 +37,7 @@ public class Cheese {
         nextId++;
     }
 
+    /** Getters and Setters **/
     public String getName() {
         return name;
     }
@@ -77,6 +78,7 @@ public class Cheese {
         this.rating = rating;
     }
 
+    /** override methods **/
     @Override
     public String toString() {
         return "Cheese{" + name + " : " + description + "}";

@@ -10,7 +10,7 @@
 
         <h1 th:text="${title}">Default Title</h1>
 
-        <p th:unless="${myCheeses} and ${myCheeses.size()}">no cheese :(</p>
+        <h4 th:unless="${myCheeses} and ${myCheeses.size()}">no cheese :(</h4>
 
         <table class="table" th:if="${myCheeses} and ${myCheeses.size()}">
             <tr>

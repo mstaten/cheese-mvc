@@ -32,10 +32,13 @@ public class CheeseController {
     }
 
     @RequestMapping(value = {"edit/{cheeseId}"}, method = RequestMethod.POST)
-    public String processEditForm(@ModelAttribute @Valid Cheese cheeseToEdit, Errors errors) {
+    public String processEditForm(@ModelAttribute @Valid Cheese cheeseToEdit, Errors errors,
+                                  Model model) {
 
         if (errors.hasErrors()) {
-            return "redirect:/cheese";
+            model.addAttribute("cheese",cheeseToEdit);
+            model.addAttribute("cheeseTypes", CheeseType.values());
+            return "cheese/edit";
         }
 
         Cheese editCheese2 = CheeseData.getById(cheeseToEdit.getCheeseId());
@@ -43,7 +46,6 @@ public class CheeseController {
         editCheese2.setDescription(cheeseToEdit.getDescription());
         editCheese2.setType(cheeseToEdit.getType());
         editCheese2.setRating(cheeseToEdit.getRating());
-        // works BUT not catching errors
 
         return "redirect:/cheese";
     }
